@@ -1,0 +1,256 @@
+Hyperparameter optimization using GridSearchCV...
+Parameters with rank: 1
+Mean validation score: 0.8507 (std: 0.0331)
+Parameters: {'max_features': 9, 'min_samples_split': 2, 'criterion': 'gini', 'max_depth': 10, 'n_estimators': 100}
+
+Parameters with rank: 2
+Mean validation score: 0.8496 (std: 0.0449)
+Parameters: {'max_features': 8, 'min_samples_split': 6, 'criterion': 'entropy', 'max_depth': 9, 'n_estimators': 100}
+
+Parameters with rank: 3
+Mean validation score: 0.8485 (std: 0.0469)
+Parameters: {'max_features': 9, 'min_samples_split': 2, 'criterion': 'gini', 'max_depth': 7, 'n_estimators': 100}
+
+Parameters with rank: 4
+Mean validation score: 0.8485 (std: 0.0402)
+Parameters: {'max_features': 9, 'min_samples_split': 10, 'criterion': 'entropy', 'max_depth': 5, 'n_estimators': 250}
+
+Parameters with rank: 5
+Mean validation score: 0.8485 (std: 0.0397)
+Parameters: {'max_features': 5, 'min_samples_split': 6, 'criterion': 'entropy', 'max_depth': 10, 'n_estimators': 100}
+
+Hyperparameter optimization using RandomizedSearchCV with max_depth parameter...
+Parameters with rank: 1
+Mean validation score: 0.8395 (std: 0.0428)
+Parameters: {'max_features': 9, 'min_samples_split': 10, 'criterion': 'entropy', 'max_depth': 10, 'n_estimators': 250}
+
+Parameters with rank: 2
+Mean validation score: 0.8384 (std: 0.0435)
+Parameters: {'max_features': 6, 'min_samples_split': 10, 'criterion': 'entropy', 'max_depth': 7, 'n_estimators': 200}
+
+Parameters with rank: 3
+Mean validation score: 0.8361 (std: 0.0429)
+Parameters: {'max_features': 5, 'min_samples_split': 10, 'criterion': 'entropy', 'max_depth': 10, 'n_estimators': 100}
+
+Parameters with rank: 4
+Mean validation score: 0.8328 (std: 0.0437)
+Parameters: {'max_features': 6, 'min_samples_split': 10, 'criterion': 'gini', 'max_depth': 7, 'n_estimators': 200}
+
+Parameters with rank: 5
+Mean validation score: 0.8316 (std: 0.0416)
+Parameters: {'max_features': 9, 'min_samples_split': 10, 'criterion': 'gini', 'max_depth': 6, 'n_estimators': 200}
+
+...and using RandomizedSearchCV with min_samples_leaf + max_leaf_nodes parameters...
+Traceback (most recent call last):
+  File "RF_opt.py", line 78, in <module>
+    grid_search.fit(X, y)
+  File "/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/grid_search.py", line 898, in fit
+    return self._fit(X, y, sampled_params)
+  File "/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/grid_search.py", line 505, in _fit
+    for parameters in parameter_iterable
+  File "/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/externals/joblib/parallel.py", line 666, in __call__
+    self.retrieve()
+  File "/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/externals/joblib/parallel.py", line 549, in retrieve
+    raise exception_type(report)
+sklearn.externals.joblib.my_exceptions.JoblibValueError: JoblibValueError
+___________________________________________________________________________
+Multiprocessing exception:
+    ...........................................................................
+/users/nfs/Etu9/3404759/Workspace/Semestre02/ARF/Titanic/Sources/RF_opt.py in <module>()
+     73 grid_search.fit(X, y)
+     74 best_params_from_rand_search1 = report(grid_search.grid_scores_)
+     75 
+     76 print "...and using RandomizedSearchCV with min_samples_leaf + max_leaf_nodes parameters..."
+     77 grid_search = RandomizedSearchCV(forest, random_test2, n_jobs=-1, cv=10, n_iter=500)
+---> 78 grid_search.fit(X, y)
+     79 best_params_from_rand_search2 = report(grid_search.grid_scores_)
+     80 
+     81 
+     82 
+
+...........................................................................
+/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/grid_search.py in fit(self=RandomizedSearchCV(cv=10, error_score='raise',
+ ...e, refit=True,
+          scoring=None, verbose=0), X=array([[   1.        ,    3.        ,   22.     ...        ,
+         192.        ,    0.        ]]), y=array([0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0,... 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0]))
+    893 
+    894         """
+    895         sampled_params = ParameterSampler(self.param_distributions,
+    896                                           self.n_iter,
+    897                                           random_state=self.random_state)
+--> 898         return self._fit(X, y, sampled_params)
+        self._fit = <bound method RandomizedSearchCV._fit of Randomi..., refit=True,
+          scoring=None, verbose=0)>
+        X = array([[   1.        ,    3.        ,   22.     ...        ,
+         192.        ,    0.        ]])
+        y = array([0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0,... 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0])
+        sampled_params = <sklearn.grid_search.ParameterSampler object>
+    899 
+    900 
+    901 
+    902 
+
+...........................................................................
+/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/grid_search.py in _fit(self=RandomizedSearchCV(cv=10, error_score='raise',
+ ...e, refit=True,
+          scoring=None, verbose=0), X=array([[   1.        ,    3.        ,   22.     ...        ,
+         192.        ,    0.        ]]), y=array([0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0,... 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0]), parameter_iterable=<sklearn.grid_search.ParameterSampler object>)
+    500         )(
+    501             delayed(_fit_and_score)(clone(base_estimator), X, y, self.scorer_,
+    502                                     train, test, self.verbose, parameters,
+    503                                     self.fit_params, return_parameters=True,
+    504                                     error_score=self.error_score)
+--> 505                 for parameters in parameter_iterable
+        parameters = undefined
+        parameter_iterable = <sklearn.grid_search.ParameterSampler object>
+    506                 for train, test in cv)
+    507 
+    508         # Out is a list of triplet: score, estimator, n_test_samples
+    509         n_fits = len(out)
+
+...........................................................................
+/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/externals/joblib/parallel.py in __call__(self=Parallel(n_jobs=-1), iterable=<itertools.islice object>)
+    661             if pre_dispatch == "all" or n_jobs == 1:
+    662                 # The iterable was consumed all at once by the above for loop.
+    663                 # No need to wait for async callbacks to trigger to
+    664                 # consumption.
+    665                 self._iterating = False
+--> 666             self.retrieve()
+        self.retrieve = <bound method Parallel.retrieve of Parallel(n_jobs=-1)>
+    667             # Make sure that we get a last message telling us we are done
+    668             elapsed_time = time.time() - self._start_time
+    669             self._print('Done %3i out of %3i | elapsed: %s finished',
+    670                         (len(self._output),
+
+    ---------------------------------------------------------------------------
+    Sub-process traceback:
+    ---------------------------------------------------------------------------
+    ValueError                                         Mon May  4 10:06:05 2015
+PID: 5568                                     Python 2.7.3: /usr/bin/python
+...........................................................................
+/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/cross_validation.pyc in _fit_and_score(estimator=RandomForestClassifier(bootstrap=True, class_wei..., random_state=None, verbose=0, warm_start=False), X=array([[   1.        ,    3.        ,   22.     ...        ,
+         192.        ,    0.        ]]), y=array([0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0,... 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0]), scorer=<function _passthrough_scorer>, train=array([ 82,  84,  85,  88,  94,  95,  96,  97,  ...,
+       883, 884, 885, 886, 887, 888, 889, 890]), test=array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 1..., 80, 81, 83, 86, 87,
+       89, 90, 91, 92, 93]), verbose=0, parameters={'criterion': 'gini', 'max_features': 7, 'max_leaf_nodes': 1, 'min_samples_leaf': 3, 'min_samples_split': 410, 'n_estimators': 250}, fit_params={}, return_train_score=False, return_parameters=True, error_score='raise')
+   1454 
+   1455     try:
+   1456         if y_train is None:
+   1457             estimator.fit(X_train, **fit_params)
+   1458         else:
+-> 1459             estimator.fit(X_train, y_train, **fit_params)
+   1460 
+   1461     except Exception as e:
+   1462         if error_score == 'raise':
+   1463             raise
+
+...........................................................................
+/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/ensemble/forest.pyc in fit(self=RandomForestClassifier(bootstrap=True, class_wei..., random_state=None, verbose=0, warm_start=False), X=array([[  83.        ,    3.        ,   17.36087...    192.        ,    0.        ]], dtype=float32), y=array([[ 1.],
+       [ 1.],
+       [ 1.],
+      ...[ 1.],
+       [ 0.],
+       [ 1.],
+       [ 0.]]), sample_weight=None)
+    268             trees = Parallel(n_jobs=self.n_jobs, verbose=self.verbose,
+    269                              backend="threading")(
+    270                 delayed(_parallel_build_trees)(
+    271                     t, self, X, y, sample_weight, i, len(trees),
+    272                     verbose=self.verbose, class_weight=self.class_weight)
+--> 273                 for i, t in enumerate(trees))
+    274 
+    275             # Collect newly grown trees
+    276             self.estimators_.extend(trees)
+    277 
+
+...........................................................................
+/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/externals/joblib/parallel.pyc in __call__(self=Parallel(n_jobs=1), iterable=<generator object <genexpr>>)
+    654             if set_environ_flag:
+    655                 # Set an environment variable to avoid infinite loops
+    656                 os.environ[JOBLIB_SPAWNED_PROCESS] = '1'
+    657             self._iterating = True
+    658             for function, args, kwargs in iterable:
+--> 659                 self.dispatch(function, args, kwargs)
+    660 
+    661             if pre_dispatch == "all" or n_jobs == 1:
+    662                 # The iterable was consumed all at once by the above for loop.
+    663                 # No need to wait for async callbacks to trigger to
+
+...........................................................................
+/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/externals/joblib/parallel.pyc in dispatch(self=Parallel(n_jobs=1), func=<function _parallel_build_trees>, args=(DecisionTreeClassifier(class_weight=None, criter...        random_state=1020537331, splitter='best'), RandomForestClassifier(bootstrap=True, class_wei..., random_state=None, verbose=0, warm_start=False), array([[  83.        ,    3.        ,   17.36087...    192.        ,    0.        ]], dtype=float32), array([[ 1.],
+       [ 1.],
+       [ 1.],
+      ...[ 1.],
+       [ 0.],
+       [ 1.],
+       [ 0.]]), None, 0, 250), kwargs={'class_weight': None, 'verbose': 0})
+    401 
+    402     def dispatch(self, func, args, kwargs):
+    403         """ Queue the function for computing, with or without multiprocessing
+    404         """
+    405         if self._pool is None:
+--> 406             job = ImmediateApply(func, args, kwargs)
+    407             index = len(self._jobs)
+    408             if not _verbosity_filter(index, self.verbose):
+    409                 self._print('Done %3i jobs       | elapsed: %s',
+    410                         (index + 1,
+
+...........................................................................
+/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/externals/joblib/parallel.pyc in __init__(self=<sklearn.externals.joblib.parallel.ImmediateApply object>, func=<function _parallel_build_trees>, args=(DecisionTreeClassifier(class_weight=None, criter...        random_state=1020537331, splitter='best'), RandomForestClassifier(bootstrap=True, class_wei..., random_state=None, verbose=0, warm_start=False), array([[  83.        ,    3.        ,   17.36087...    192.        ,    0.        ]], dtype=float32), array([[ 1.],
+       [ 1.],
+       [ 1.],
+      ...[ 1.],
+       [ 0.],
+       [ 1.],
+       [ 0.]]), None, 0, 250), kwargs={'class_weight': None, 'verbose': 0})
+    135     """ A non-delayed apply function.
+    136     """
+    137     def __init__(self, func, args, kwargs):
+    138         # Don't delay the application, to avoid keeping the input
+    139         # arguments in memory
+--> 140         self.results = func(*args, **kwargs)
+    141 
+    142     def get(self):
+    143         return self.results
+    144 
+
+...........................................................................
+/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/ensemble/forest.pyc in _parallel_build_trees(tree=DecisionTreeClassifier(class_weight=None, criter...        random_state=1020537331, splitter='best'), forest=RandomForestClassifier(bootstrap=True, class_wei..., random_state=None, verbose=0, warm_start=False), X=array([[  83.        ,    3.        ,   17.36087...    192.        ,    0.        ]], dtype=float32), y=array([[ 1.],
+       [ 1.],
+       [ 1.],
+      ...[ 1.],
+       [ 0.],
+       [ 1.],
+       [ 0.]]), sample_weight=None, tree_idx=0, n_trees=250, verbose=0, class_weight=None)
+     89         curr_sample_weight *= sample_counts
+     90 
+     91         if class_weight == 'subsample':
+     92             curr_sample_weight *= compute_sample_weight('auto', y, indices)
+     93 
+---> 94         tree.fit(X, y, sample_weight=curr_sample_weight, check_input=False)
+     95 
+     96         tree.indices_ = sample_counts > 0.
+     97 
+     98     else:
+
+...........................................................................
+/users/Etu9/3404759/.local/lib/python2.7/site-packages/sklearn/tree/tree.pyc in fit(self=DecisionTreeClassifier(class_weight=None, criter...        random_state=1020537331, splitter='best'), X=array([[  83.        ,    3.        ,   17.36087...    192.        ,    0.        ]], dtype=float32), y=array([[ 1.],
+       [ 1.],
+       [ 1.],
+      ...[ 1.],
+       [ 0.],
+       [ 1.],
+       [ 0.]]), sample_weight=array([ 0.,  1.,  0.,  0.,  1.,  2.,  1.,  3.,  ...,
+        0.,  2.,  1.,  1.,  2.,  0.,  0.,  1.]), check_input=False)
+    232         if not isinstance(max_leaf_nodes, (numbers.Integral, np.integer)):
+    233             raise ValueError("max_leaf_nodes must be integral number but was "
+    234                              "%r" % max_leaf_nodes)
+    235         if -1 < max_leaf_nodes < 2:
+    236             raise ValueError(("max_leaf_nodes {0} must be either smaller than "
+--> 237                               "0 or larger than 1").format(max_leaf_nodes))
+    238 
+    239         if sample_weight is not None:
+    240             if (getattr(sample_weight, "dtype", None) != DOUBLE or
+    241                     not sample_weight.flags.contiguous):
+
+ValueError: max_leaf_nodes 1 must be either smaller than 0 or larger than 1
+___________________________________________________________________________

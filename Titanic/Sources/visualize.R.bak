@@ -1,0 +1,59 @@
+readData <- function(path.name, file.name, column.types, missing.types) {
+  read.csv( file.name, colClasses=column.types, na.strings=missing.types )
+}
+
+Titanic.path <- "https://raw.github.com/wehrley/Kaggle_Titanic/master/"
+train.data.file <- "train.csv"
+test.data.file <- "test.csv"
+missing.types <- c("NA", "")
+train.column.types <- c('integer',   # PassengerId
+                        'factor',    # Survived 
+                        'factor',    # Pclass
+                        'character', # Name
+                        'factor',    # Sex
+                        'numeric',   # Age
+                        'integer',   # SibSp
+                        'integer',   # Parch
+                        'character', # Ticket
+                        'numeric',   # Fare
+                        'character', # Cabin
+                        'factor'     # Embarked
+)
+test.column.types <- train.column.types[-2]     # # no Survived column in test.csv
+
+train.raw <- readData(Titanic.path, train.data.file, 
+                      train.column.types, missing.types)
+df.train <- train.raw
+
+test.raw <- readData(Titanic.path, test.data.file, 
+                     test.column.types, missing.types)
+df.infer <- test.raw
+
+# png('DataDistribute.png')
+dev.new(width=10, height=10)
+attach(mtcars)
+par(mfrow=c(2,4))
+barplot(table(df.train$Survived), names.arg = c("Perished", "Survived"), main="passenger fate", col="blue")
+barplot(table(df.train$Pclass), names.arg = c("first", "second", "third"), main="Pclass", col="firebrick")
+barplot(table(df.train$Sex), main="Gender", col="darkviolet")
+hist(df.train$Age, main="Age", xlab = NULL, col="brown")
+barplot(table(df.train$SibSp), main="SibSp", col="darkblue")
+barplot(table(df.train$Parch), main="Parch", col="gray50")
+hist(df.train$Fare, main="Fare of ticket[s]", xlab = NULL, col="darkgreen")
+barplot(table(df.train$Embarked), names.arg = c("Cherbourg", "Queenstown", "Southampton"), main="Embarked", col="sienna")
+dev.off()
+
+dev.new(width=10, height=10)
+attach(mtcars)
+par(mfrow=c(2,2))
+mosaicplot(df.train$Pclass ~ df.train$Survived, main="Passenger Fate by Traveling Class", shade=FALSE, color=TRUE, xlab="Pclass", ylab="Survived")
+mosaicplot(df.train$Sex ~ df.train$Survived, main="Passenger Fate by Gender", shade=FALSE, color=TRUE, xlab="Gender", ylab="Survived")
+boxplot(df.train$Age ~ df.train$Survived, main="Passenger Fate by Age", xlab="Survived", ylab="Age")
+mosaicplot(df.train$Embarked ~ df.train$Survived, main="Passenger Fate by Port of Embarkation", shade=FALSE, color=TRUE, xlab="Embarked", ylab="Survived")
+def.off()
+
+dev.new(width=10, height=10)
+attach(mtcars)
+par(mfrow=c(1,2))
+mosaicplot(df.train$Embarked ~ df.train$Pclass, main="Passenger Pclass by Port of Embarkation", shade=FALSE, color=TRUE, xlab="Embarked", ylab="Pclass")
+mosaicplot(df.train$Pclass ~ df.train$Sex, main="Passenger Pclass by Gender", shade=FALSE, color=TRUE, xlab="Pclass", ylab="Gender")

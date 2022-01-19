@@ -1,0 +1,21 @@
+...and using RandomizedSearchCV with min_samples_leaf + max_leaf_nodes parameters...
+Parameters with rank: 1
+Mean validation score: 0.8339 (std: 0.0388)
+Parameters: {'max_leaf_nodes': 5, 'min_samples_leaf': 3, 'n_estimators': 350, 'max_features': 7, 'criterion': 'entropy', 'min_samples_split': 10}
+
+Parameters with rank: 2
+Mean validation score: 0.8305 (std: 0.0389)
+Parameters: {'max_leaf_nodes': 5, 'min_samples_leaf': 2, 'n_estimators': 450, 'max_features': 9, 'criterion': 'gini', 'min_samples_split': 10}
+
+Parameters with rank: 3
+Mean validation score: 0.8294 (std: 0.0367)
+Parameters: {'max_leaf_nodes': 5, 'min_samples_leaf': 1, 'n_estimators': 250, 'max_features': 7, 'criterion': 'entropy', 'min_samples_split': 10}
+
+Parameters with rank: 4
+Mean validation score: 0.8283 (std: 0.0358)
+Parameters: {'max_leaf_nodes': 5, 'min_samples_leaf': 5, 'n_estimators': 250, 'max_features': 6, 'criterion': 'entropy', 'min_samples_split': 10}
+
+Parameters with rank: 5
+Mean validation score: 0.8283 (std: 0.0378)
+Parameters: {'max_leaf_nodes': 4, 'min_samples_leaf': 4, 'n_estimators': 300, 'max_features': 6, 'criterion': 'gini', 'min_samples_split': 10}
+

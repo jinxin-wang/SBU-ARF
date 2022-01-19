@@ -1,0 +1,63 @@
+Hyperparameter optimization using GridSearchCV...
+Parameters with rank: 1
+Mean validation score: 0.8474 (std: 0.0371)
+Parameters: {'max_features': 4, 'min_samples_split': 4, 'criterion': 'entropy', 'max_depth': 6, 'n_estimators': 150}
+
+Parameters with rank: 2
+Mean validation score: 0.8474 (std: 0.0405)
+Parameters: {'max_features': 4, 'min_samples_split': 14, 'criterion': 'entropy', 'max_depth': 6, 'n_estimators': 100}
+
+Parameters with rank: 3
+Mean validation score: 0.8462 (std: 0.0368)
+Parameters: {'max_features': 5, 'min_samples_split': 2, 'criterion': 'gini', 'max_depth': 10, 'n_estimators': 100}
+
+Parameters with rank: 4
+Mean validation score: 0.8462 (std: 0.0391)
+Parameters: {'max_features': 5, 'min_samples_split': 6, 'criterion': 'entropy', 'max_depth': 6, 'n_estimators': 200}
+
+Parameters with rank: 5
+Mean validation score: 0.8451 (std: 0.0359)
+Parameters: {'max_features': 3, 'min_samples_split': 4, 'criterion': 'gini', 'max_depth': 6, 'n_estimators': 150}
+
+Hyperparameter optimization using RandomizedSearchCV with max_depth parameter...
+Parameters with rank: 1
+Mean validation score: 0.8350 (std: 0.0445)
+Parameters: {'max_features': 9, 'min_samples_split': 10, 'criterion': 'entropy', 'max_depth': 7, 'n_estimators': 450}
+
+Parameters with rank: 2
+Mean validation score: 0.8339 (std: 0.0397)
+Parameters: {'max_features': 4, 'min_samples_split': 10, 'criterion': 'gini', 'max_depth': 9, 'n_estimators': 100}
+
+Parameters with rank: 3
+Mean validation score: 0.8339 (std: 0.0416)
+Parameters: {'max_features': 6, 'min_samples_split': 10, 'criterion': 'gini', 'max_depth': 3, 'n_estimators': 250}
+
+Parameters with rank: 4
+Mean validation score: 0.8339 (std: 0.0367)
+Parameters: {'max_features': 9, 'min_samples_split': 10, 'criterion': 'gini', 'max_depth': 9, 'n_estimators': 100}
+
+Parameters with rank: 5
+Mean validation score: 0.8339 (std: 0.0397)
+Parameters: {'max_features': 7, 'min_samples_split': 10, 'criterion': 'gini', 'max_depth': 9, 'n_estimators': 150}
+
+...and using RandomizedSearchCV with min_samples_leaf + max_leaf_nodes parameters...
+Parameters with rank: 1
+Mean validation score: 0.8328 (std: 0.0396)
+Parameters: {'max_leaf_nodes': 4, 'min_samples_leaf': 5, 'n_estimators': 450, 'max_features': 8, 'criterion': 'gini', 'min_samples_split': 10}
+
+Parameters with rank: 2
+Mean validation score: 0.8305 (std: 0.0383)
+Parameters: {'max_leaf_nodes': 5, 'min_samples_leaf': 1, 'n_estimators': 150, 'max_features': 6, 'criterion': 'entropy', 'min_samples_split': 10}
+
+Parameters with rank: 3
+Mean validation score: 0.8305 (std: 0.0358)
+Parameters: {'max_leaf_nodes': 4, 'min_samples_leaf': 3, 'n_estimators': 250, 'max_features': 4, 'criterion': 'entropy', 'min_samples_split': 10}
+
+Parameters with rank: 4
+Mean validation score: 0.8305 (std: 0.0359)
+Parameters: {'max_leaf_nodes': 5, 'min_samples_leaf': 5, 'n_estimators': 350, 'max_features': 3, 'criterion': 'entropy', 'min_samples_split': 10}
+
+Parameters with rank: 5
+Mean validation score: 0.8305 (std: 0.0423)
+Parameters: {'max_leaf_nodes': 5, 'min_samples_leaf': 4, 'n_estimators': 400, 'max_features': 6, 'criterion': 'gini', 'min_samples_split': 10}
+
